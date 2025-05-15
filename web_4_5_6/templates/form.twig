@@ -1,0 +1,43 @@
+<!-- templates/form.twig -->
+
+<h1>Добавить блюдо</h1>
+<form method="POST" action="/submit">
+    <input type="text" name="dish_name" placeholder="Название блюда" required>
+    <input type="text" name="ingredient1" placeholder="Ингредиент 1" required>
+    <input type="text" name="ingredient2" placeholder="Ингредиент 2" required>
+    <input type="number" name="weight" placeholder="Вес (граммы)" required>
+    <button type="submit">Сохранить</button>
+</form>
+
+<h2>Список блюд</h2>
+<form method="GET" action="/">
+    <input type="text" name="filter" value="{{ filter }}" placeholder="Фильтр по названию или ингредиентам">
+    <button type="submit">Фильтровать</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Блюдо</th>
+            <th>Ингредиент 1</th>
+            <th>Ингредиент 2</th>
+            <th>Вес</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.dish_name }}</td>
+                <td>{{ user.ingredient1 }}</td>
+                <td>{{ user.ingredient2 }}</td>
+                <td>{{ user.weight }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/export/pdf">Скачать PDF</a>
+<a href="/export/csv">Скачать CSV</a>
+<a href="/export/xlsx">Скачать XLSX</a>
+
+<a href="/logout">Выйти</a>
+<script src="/../public/assets/javascript/val.js"></script>
