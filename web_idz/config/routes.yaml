@@ -1,0 +1,71 @@
+# config/routes.yaml
+
+# Стартовая страница (например, форма входа)
+home:
+  path: /
+  controller: App\Controller\AuthController::loginForm
+
+# Аутентификация
+login_form:
+  path: /login
+  controller: App\Controller\AuthController::loginForm
+  methods: [GET]
+
+login:
+  path: /login
+  controller: App\Controller\AuthController::login
+  methods: [POST]
+
+logout:
+  path: /logout
+  controller: App\Controller\AuthController::logout
+  methods: [GET]
+
+# Регистрация
+register_form:
+  path: /register
+  controller: App\Controller\AuthController::registerForm
+  methods: [GET]
+
+register:
+  path: /register
+  controller: App\Controller\AuthController::register
+  methods: [POST]
+
+# Страница для администратора (ввод данных меню)
+admin_menu:
+  path: /admin/menu
+  controller: App\Controller\MenuController::adminMenu
+  methods: [GET]
+
+menu_store:
+  path: /admin/menu/store
+  controller: App\Controller\MenuController::store
+  methods: [POST]
+
+menu_index:
+  path: /admin/menu/index
+  controller: App\Controller\MenuController::index
+  methods: [GET]
+
+# Экспорт отчетов (только для admin)
+menu_export_pdf:
+  path: /admin/export/pdf
+  controller: App\Controller\MenuController::exportPdf
+  methods: [GET]
+
+menu_export_csv:
+  path: /admin/export/csv
+  controller: App\Controller\MenuController::exportCsv
+  methods: [GET]
+
+menu_export_xlsx:
+  path: /admin/export/xlsx
+  controller: App\Controller\MenuController::exportXlsx
+  methods: [GET]
+
+# Отчеты пользователя (только для user)
+user_reports:
+  path: /user/reports
+  controller: App\Controller\MenuController::userReports
+  methods: [GET]

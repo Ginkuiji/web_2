@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/css/style.css">
+<h1>Добавить блюдо</h1>
+<form method="POST" action="{{ path('menu_store') }}">
+    <input type="text" name="dish_name" placeholder="Название блюда" required>
+    <input type="text" name="ingredient1" placeholder="Ингредиент 1" required>
+    <input type="text" name="ingredient2" placeholder="Ингредиент 2" required>
+    <input type="number" name="weight" placeholder="Вес (граммы)" required>
+    <button type="submit">Сохранить</button>
+</form>
+
+<h2>Список блюд</h2>
+<form method="GET" action="{{ path('admin_menu') }}">
+    <input type="text" name="filter" value="{{ filter }}" placeholder="Фильтр по названию или ингредиентам">
+    <button type="submit">Фильтровать</button>
+</form>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название блюда</th>
+            <th>Ингредиент 1</th>
+            <th>Ингредиент 2</th>
+            <th>Вес (грамм)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for menu in menus %}
+            <tr>
+                <td>{{ menu.id }}</td>
+                <td>{{ menu.MenuDishName }}</td>
+                <td>{{ menu.MenuIngredient1 }}</td>
+                <td>{{ menu.MenuIngredient2 }}</td>
+                <td>{{ menu.MenuWeight }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Нет данных для отображения.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</table>
+<a href="{{ path('menu_export_pdf') }}">Скачать PDF</a>
+<a href="{{ path('menu_export_csv') }}">Скачать CSV</a>
+<a href="{{ path('menu_export_xlsx') }}">Скачать XLSX</a>
+
+<a href="{{ path('logout') }}">Выйти</a>
+<script src="/../public/js/val.js"></script>
